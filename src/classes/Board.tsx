@@ -205,6 +205,9 @@ export default class Board extends React.Component {
         })
     }
 
+    /**
+     * @description Will handle a adding a event listener on the piece, and to show available moves.
+     */
     handlePieceClick(ev: any): void {
         const currentPos: string = ev.currentTarget.id;
         const currentPiece: string = ev.currentTarget.children[0].classList[2];
