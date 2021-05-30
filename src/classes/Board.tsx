@@ -7,129 +7,170 @@ import Piece from '../util/Piece'
 export default class Board extends React.Component {
     state: state = {
         history: {
-          black: {
-            pawns: {
-              pawn1: ['a7'],
-              pawn2: ['b7'],
-              pawn3: ['c7'],
-              pawn4: ['d7'],
-              pawn5: ['e7'],
-              pawn6: ['f7'],
-              pawn7: ['g7'],
-              pawn8: ['h7'],
+            black: {
+                pawns: {
+                    pawn1: ['a7'],
+                    pawn2: ['b7'],
+                    pawn3: ['c7'],
+                    pawn4: ['d7'],
+                    pawn5: ['e7'],
+                    pawn6: ['f7'],
+                    pawn7: ['g7'],
+                    pawn8: ['h7'],
+                },
+                rooks: {
+                    rook1: [],
+                    rook2: [],
+                },
+                knights: {
+                    knight1: [],
+                    knight2: [],
+                },
+                bishops: {
+                    bishop1: [],
+                    bishop2: [],
+                },
+                queen: [],
+                king: [],
             },
-            rooks: {
-              rook1: [],
-              rook2: [],
-            },
-            knights: {
-              knight1: [],
-              knight2: [],
-            },
-            bishops: {
-              bishop1: [],
-              bishop2: [],
-            },
-            queen: [],
-            king: [],
-          },
-          white: {
-            pawns: {
-              pawn1: ['a7'],
-              pawn2: ['b7'],
-              pawn3: ['c7'],
-              pawn4: ['d7'],
-              pawn5: ['e7'],
-              pawn6: ['f7'],
-              pawn7: ['g7'],
-              pawn8: ['h7'],
-            },
-            rooks: {
-              rook1: [],
-              rook2: [],
-            },
-            knights: {
-              knight1: [],
-              knight2: [],
-            },
-            bishops: {
-              bishop1: [],
-              bishop2: [],
-            },
-            queen: [],
-            king: [],
-          }
+            white: {
+                pawns: {
+                    pawn1: ['a7'],
+                    pawn2: ['b7'],
+                    pawn3: ['c7'],
+                    pawn4: ['d7'],
+                    pawn5: ['e7'],
+                    pawn6: ['f7'],
+                    pawn7: ['g7'],
+                    pawn8: ['h7'],
+                },
+                rooks: {
+                    rook1: [],
+                    rook2: [],
+                },
+                knights: {
+                    knight1: [],
+                    knight2: [],
+                },
+                bishops: {
+                    bishop1: [],
+                    bishop2: [],
+                },
+                queen: [],
+                king: [],
+            }
         },
         placing: {
-            a1: <Piece name="R" color="w"/>,
-            a2: <Piece name="P" color="w"/>,
+            a1: <Piece name="R" color="w" />,
+            a2: <Piece name="P" color="w" />,
             a3: '',
             a4: '',
             a5: '',
             a6: '',
-            a7: <Piece name="P" color="b"/>,
-            a8: <Piece name="R" color="b"/>,
-            b1: <Piece name="N" color="w"/>,
-            b2: <Piece name="P" color="w"/>,
+            a7: <Piece name="P" color="b" />,
+            a8: <Piece name="R" color="b" />,
+            b1: <Piece name="N" color="w" />,
+            b2: <Piece name="P" color="w" />,
             b3: '',
             b4: '',
             b5: '',
             b6: '',
-            b7: <Piece name="P" color="b"/>,
-            b8: <Piece name="N" color="b"/>,
-            c1: <Piece name="B" color="w"/>,
-            c2: <Piece name="P" color="w"/>,
+            b7: <Piece name="P" color="b" />,
+            b8: <Piece name="N" color="b" />,
+            c1: <Piece name="B" color="w" />,
+            c2: <Piece name="P" color="w" />,
             c3: '',
             c4: '',
             c5: '',
             c6: '',
-            c7: <Piece name="P" color="b"/>,
-            c8: <Piece name="B" color="b"/>,
-            d1: <Piece name="Q" color="w"/>,
-            d2: <Piece name="P" color="w"/>,
+            c7: <Piece name="P" color="b" />,
+            c8: <Piece name="B" color="b" />,
+            d1: <Piece name="Q" color="w" />,
+            d2: <Piece name="P" color="w" />,
             d3: '',
             d4: '',
             d5: '',
             d6: '',
-            d7: <Piece name="P" color="b"/>,
-            d8: <Piece name="Q" color="b"/>,
-            e1: <Piece name="K" color="w"/>,
-            e2: <Piece name="P" color="w"/>,
+            d7: <Piece name="P" color="b" />,
+            d8: <Piece name="Q" color="b" />,
+            e1: <Piece name="K" color="w" />,
+            e2: <Piece name="P" color="w" />,
             e3: '',
             e4: '',
             e5: '',
             e6: '',
-            e7: <Piece name="P" color="b"/>,
-            e8: <Piece name="K" color="b"/>,
-            f1: <Piece name="B" color="w"/>,
-            f2: <Piece name="P" color="w"/>,
+            e7: <Piece name="P" color="b" />,
+            e8: <Piece name="K" color="b" />,
+            f1: <Piece name="B" color="w" />,
+            f2: <Piece name="P" color="w" />,
             f3: '',
             f4: '',
             f5: '',
             f6: '',
-            f7: <Piece name="P" color="b"/>,
-            f8: <Piece name="B" color="b"/>,
-            g1: <Piece name="N" color="w"/>,
-            g2: <Piece name="P" color="w"/>,
+            f7: <Piece name="P" color="b" />,
+            f8: <Piece name="B" color="b" />,
+            g1: <Piece name="N" color="w" />,
+            g2: <Piece name="P" color="w" />,
             g3: '',
             g4: '',
             g5: '',
             g6: '',
-            g7: <Piece name="P" color="b"/>,
-            g8: <Piece name="N" color="b"/>,
-            h1: <Piece name="R" color="w"/>,
-            h2: <Piece name="P" color="w"/>,
+            g7: <Piece name="P" color="b" />,
+            g8: <Piece name="N" color="b" />,
+            h1: <Piece name="R" color="w" />,
+            h2: <Piece name="P" color="w" />,
             h3: '',
             h4: '',
             h5: '',
             h6: '',
-            h7: <Piece name="P" color="b"/>,
-            h8: <Piece name="R" color="b"/>,
+            h7: <Piece name="P" color="b" />,
+            h8: <Piece name="R" color="b" />,
         },
-        player: 'white'
-      }
+        player: 'black'
+    }
 
-    
+    getSqS(): HTMLCollectionOf<Element> {
+        return document.getElementsByClassName('sq')
+    }
+
+    getSq(sq: string): HTMLElement | null {
+        return document.getElementById(sq)
+    }
+
+    getActivePieces(color: string): Array<HTMLElement | null>{
+        const allPlacements = Object.entries(this.state.placing);
+        var total: Array<HTMLElement | null> = [];
+        allPlacements.forEach((a)=>{
+            if(a[1] !== '') {
+                var el = document.getElementById(a[0]) || {children: [{classList: ['a', 'a']}]};
+                if(el.children[0].classList[1] === color) { 
+                    total.push(
+                        document.getElementById(a[0])
+                    )
+                }
+            }
+        })
+        return total;
+    }
+
+    handlePieceClick(ev: any): void {
+        const currentPos: string = ev.currentTarget.id;
+        const currentPiece: string = ev.currentTarget.children[0].classList[2];
+        console.log(
+            currentPos,
+            currentPiece
+        )
+    }
+
+    componentDidMount() {
+        this.getActivePieces(this.state.player[0]).forEach((el)=>{
+            if(el) {
+                el.addEventListener('click', this.handlePieceClick)
+            }
+            
+        })
+    }
+
     render() {
         return (
             this.state.player === 'white' ? (
@@ -228,7 +269,7 @@ export default class Board extends React.Component {
                         <div id="h1" className="br sq">{this.state.placing.h1}</div>
                     </div>
                     <div id="2-row" className="row">
-                        <div id="a2" className="br sq">{this.state.placing.a2}{this.state.placing.a2}</div>
+                        <div id="a2" className="br sq">{this.state.placing.a2}</div>
                         <div id="b2" className="gr sq">{this.state.placing.b2}</div>
                         <div id="c2" className="br sq">{this.state.placing.c2}</div>
                         <div id="d2" className="gr sq">{this.state.placing.d2}</div>
