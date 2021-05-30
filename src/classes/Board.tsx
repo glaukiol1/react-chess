@@ -186,6 +186,7 @@ export default class Board extends React.Component {
 
     /**
      * @bug the box event listener does not remove after one of the available boxes gets clicked
+     * @description Will loop through an array of elements, add a 'click' event listener to each one, and then remove it after one gets clicked. See bug above
      */
     handleBoxRemovmal(currentPos: string, color: string, currentPiece: string, arr: any[]) {
         arr.forEach(e=>{
