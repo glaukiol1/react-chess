@@ -241,7 +241,9 @@ export default class Board extends React.Component {
             }
         })
     }
-
+    /**
+      * @description Render the chess board, the board is different for each side, first rook for white is on a1 and for black its on a8, so on with the other pieces.
+    */
     render() {
         return (
             this.state.player === 'white' ? (
