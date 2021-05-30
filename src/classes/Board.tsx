@@ -6,6 +6,10 @@ import Piece from '../util/Piece';
 import canMoveTo from '../logic/canMoveTo';
 
 export default class Board extends React.Component {
+    constructor({props}) {
+        super(props)
+        this.handlePieceClick = this.handlePieceClick.bind(this);
+    }
     state: state = {
         history: {
             black: {
@@ -154,6 +158,48 @@ export default class Board extends React.Component {
         return total;
     }
 
+
+    changePiecePos(currentPos: any, id: string, color: string, currentPiece: any){
+        console.log(currentPos, id)
+        var state = {...this.state}
+        state.placing[currentPos] = '';
+        state.placing[id] = <Piece name={currentPiece} color={`${color}`} />
+        // var currentPieceS: string;
+        // if(currentPiece==='n') {
+        //     currentPieceS = 'knights'
+        // }
+        // state.history[(color==='b'?'black':'white')][currentPieceS]
+        /**
+         * @todo Update history
+         */
+        this.setState({state})
+        var el = document.getElementById(currentPos);
+        if(el) {
+            el.removeEventListener('click', this.handlePieceClick)
+            el = document.getElementById(id);
+            if( el ){
+                el.addEventListener('click', this.handlePieceClick)
+            }
+        }
+    }
+
+    handleBoxRemovmal(currentPos: string, color: string, currentPiece: string, arr: any[]) {
+        arr.forEach(e=>{
+            if(e) {
+                e.addEventListener('click', (ev) => {
+                    this.changePiecePos(currentPos, e.id, color, currentPiece)
+                    arr.forEach(el=>{
+                        if(el) {
+                            el.style.backgroundColor = 'transparent';
+                            el.style.borderRadius = '0';
+                            el.removeEventListener('click', this.handleBoxRemovmal)
+                        }
+                    })
+                }, {once: true})
+            }
+        })
+    }
+
     handlePieceClick(ev: any): void {
         const currentPos: string = ev.currentTarget.id;
         const currentPiece: string = ev.currentTarget.children[0].classList[2];
@@ -174,7 +220,7 @@ export default class Board extends React.Component {
                 },1000)
             }
         })
-
+        this.handleBoxRemovmal(currentPos,color,currentPiece,arr)
     }
 
     componentDidMount() {

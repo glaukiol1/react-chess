@@ -1,4 +1,4 @@
 export default interface props {
     name: string,
-    color: 'b' | 'w'
+    color: 'b' | 'w' | string
 }

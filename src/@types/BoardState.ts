@@ -110,5 +110,5 @@ interface placing extends Object {
 export default interface state {
     history: history,
     placing: placing,
-    player: string
+    player: string,
 }
