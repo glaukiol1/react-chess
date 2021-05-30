@@ -2,7 +2,8 @@ import React from 'react';
 import './Board.css';
 
 import state from '../@types/BoardState';
-import Piece from '../util/Piece'
+import Piece from '../util/Piece';
+import canMoveTo from '../logic/canMoveTo';
 
 export default class Board extends React.Component {
     state: state = {
@@ -126,7 +127,7 @@ export default class Board extends React.Component {
             h7: <Piece name="P" color="b" />,
             h8: <Piece name="R" color="b" />,
         },
-        player: 'black'
+        player: 'white'
     }
 
     getSqS(): HTMLCollectionOf<Element> {
@@ -156,18 +157,34 @@ export default class Board extends React.Component {
     handlePieceClick(ev: any): void {
         const currentPos: string = ev.currentTarget.id;
         const currentPiece: string = ev.currentTarget.children[0].classList[2];
-        console.log(
-            currentPos,
-            currentPiece
-        )
+        const color: string = ev.currentTarget.children[0].classList[1];
+        var arr: Array<HTMLElement | null> = []; 
+        canMoveTo(currentPos, currentPiece, color).forEach(place=>{
+            var el = document.getElementById(place)
+            if(el && !el.children[0]) {
+                el.style.backgroundColor = 'rgba(0,0,0,0.1)'
+                el.style.borderRadius = '80%';
+                arr.push(el)
+                setTimeout(() => {
+                    document.addEventListener('click', (ev)=>{
+                        if(ev.currentTarget != el && el) {
+                            el.style.backgroundColor = 'rgba(0,0,0,0)'
+                        }
+                    }, {once: true})
+                },1000)
+            }
+        })
+
     }
 
     componentDidMount() {
+        this.setState({
+            player: prompt('Choose side: (white || black)')
+        })
         this.getActivePieces(this.state.player[0]).forEach((el)=>{
             if(el) {
                 el.addEventListener('click', this.handlePieceClick)
             }
-            
         })
     }
 

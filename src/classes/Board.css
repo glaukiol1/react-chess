@@ -1,12 +1,14 @@
 #board {
     width: 640px;
     height: 640px;
-    background-color: black;
+    background-image: url(https://arena.myfide.net/birman-gray.c336a76039b62027e3df.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .gr {
     /* background-color: #769656; */
-    background-color: rgb(111,143,114);
+    /* background-color: rgb(0,0,0,0.3); */
     width: 80px !important;
     height: 80px !important;
     font-size: 20px !important;
@@ -18,11 +20,12 @@
     height: 80px;
 }
 
+
 .br {
-    width: 80px !important;
-    height: 80px !important;
+    width: 80px;
+    height: 80px;
     /* background-color: #baca44; */
-    background-color: rgba(173,189,143, 0.5);
+    /* background-color: rgba(255,189,143, 0.5); */
     font-size: auto !important;
     display: inline-block;
 }
@@ -32,4 +35,3 @@
     padding: 0 !important;
     height: 80px;
 }
-
