@@ -5,7 +5,8 @@
 }
 
 .gr {
-    background-color: #769656;
+    /* background-color: #769656; */
+    background-color: rgb(111,143,114);
     width: 80px !important;
     height: 80px !important;
     font-size: 20px !important;
@@ -20,7 +21,8 @@
 .br {
     width: 80px !important;
     height: 80px !important;
-    background-color: #baca44;
+    /* background-color: #baca44; */
+    background-color: rgba(173,189,143, 0.5);
     font-size: auto !important;
     display: inline-block;
 }

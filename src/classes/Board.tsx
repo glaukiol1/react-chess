@@ -1,7 +1,8 @@
 import React from 'react';
 import './Board.css';
 
-import state from '../@types/BoardState'
+import state from '../@types/BoardState';
+import Piece from '../util/Piece'
 
 export default class Board extends React.Component {
     state: state = {
@@ -60,70 +61,70 @@ export default class Board extends React.Component {
           }
         },
         placing: {
-            a1: '',
-            a2: '',
+            a1: <Piece name="R" color="w"/>,
+            a2: <Piece name="P" color="w"/>,
             a3: '',
             a4: '',
             a5: '',
             a6: '',
-            a7: '',
-            a8: '',
-            b1: '',
-            b2: '',
+            a7: <Piece name="P" color="b"/>,
+            a8: <Piece name="R" color="b"/>,
+            b1: <Piece name="N" color="w"/>,
+            b2: <Piece name="P" color="w"/>,
             b3: '',
             b4: '',
             b5: '',
             b6: '',
-            b7: '',
-            b8: '',
-            c1: '',
-            c2: '',
+            b7: <Piece name="P" color="b"/>,
+            b8: <Piece name="N" color="b"/>,
+            c1: <Piece name="B" color="w"/>,
+            c2: <Piece name="P" color="w"/>,
             c3: '',
             c4: '',
             c5: '',
             c6: '',
-            c7: '',
-            c8: '',
-            d1: '',
-            d2: '',
+            c7: <Piece name="P" color="b"/>,
+            c8: <Piece name="B" color="b"/>,
+            d1: <Piece name="Q" color="w"/>,
+            d2: <Piece name="P" color="w"/>,
             d3: '',
             d4: '',
             d5: '',
             d6: '',
-            d7: '',
-            d8: '',
-            e1: '',
-            e2: '',
+            d7: <Piece name="P" color="b"/>,
+            d8: <Piece name="Q" color="b"/>,
+            e1: <Piece name="K" color="w"/>,
+            e2: <Piece name="P" color="w"/>,
             e3: '',
             e4: '',
             e5: '',
             e6: '',
-            e7: '',
-            e8: '',
-            f1: '',
-            f2: '',
+            e7: <Piece name="P" color="b"/>,
+            e8: <Piece name="K" color="b"/>,
+            f1: <Piece name="B" color="w"/>,
+            f2: <Piece name="P" color="w"/>,
             f3: '',
             f4: '',
             f5: '',
             f6: '',
-            f7: '',
-            f8: '',
-            g1: '',
-            g2: <img className="piece_img" src="https://arena.myfide.net/assets/images/chess/birman-chesspieces/bP.svg"/>,
+            f7: <Piece name="P" color="b"/>,
+            f8: <Piece name="B" color="b"/>,
+            g1: <Piece name="N" color="w"/>,
+            g2: <Piece name="P" color="w"/>,
             g3: '',
             g4: '',
             g5: '',
             g6: '',
-            g7: '',
-            g8: '',
-            h1: '',
-            h2: '',
+            g7: <Piece name="P" color="b"/>,
+            g8: <Piece name="N" color="b"/>,
+            h1: <Piece name="R" color="w"/>,
+            h2: <Piece name="P" color="w"/>,
             h3: '',
             h4: '',
             h5: '',
             h6: '',
-            h7: '',
-            h8: '',
+            h7: <Piece name="P" color="b"/>,
+            h8: <Piece name="R" color="b"/>,
         },
         player: 'white'
       }
@@ -202,27 +203,27 @@ export default class Board extends React.Component {
                         <div id="h2" className="gr">{this.state.placing.h2}</div>
                     </div>
                     <div id="1-row" className="row">
-                        <div id="a1" className="gr"></div>
-                        <div id="b1" className="br"></div>
-                        <div id="c1" className="gr"></div>
-                        <div id="d1" className="br"></div>
-                        <div id="e1" className="gr"></div>
-                        <div id="f1" className="br"></div>
-                        <div id="g1" className="gr"></div>
-                        <div id="h1" className="br"></div>
+                        <div id="a1" className="gr">{this.state.placing.a1}</div>
+                        <div id="b1" className="br">{this.state.placing.b1}</div>
+                        <div id="c1" className="gr">{this.state.placing.c1}</div>
+                        <div id="d1" className="br">{this.state.placing.d1}</div>
+                        <div id="e1" className="gr">{this.state.placing.e1}</div>
+                        <div id="f1" className="br">{this.state.placing.f1}</div>
+                        <div id="g1" className="gr">{this.state.placing.g1}</div>
+                        <div id="h1" className="br">{this.state.placing.h1}</div>
                     </div>
                 </div>
             ) : (
                 <div id="board">
                     <div id="1-row" className="row">
-                        <div id="a1" className="gr"></div>
-                        <div id="b1" className="br"></div>
-                        <div id="c1" className="gr"></div>
-                        <div id="d1" className="br"></div>
-                        <div id="e1" className="gr"></div>
-                        <div id="f1" className="br"></div>
-                        <div id="g1" className="gr"></div>
-                        <div id="h1" className="br"></div>
+                        <div id="a1" className="gr">{this.state.placing.a1}</div>
+                        <div id="b1" className="br">{this.state.placing.b1}</div>
+                        <div id="c1" className="gr">{this.state.placing.c1}</div>
+                        <div id="d1" className="br">{this.state.placing.d1}</div>
+                        <div id="e1" className="gr">{this.state.placing.e1}</div>
+                        <div id="f1" className="br">{this.state.placing.f1}</div>
+                        <div id="g1" className="gr">{this.state.placing.g1}</div>
+                        <div id="h1" className="br">{this.state.placing.h1}</div>
                     </div>
                     <div id="2-row" className="row">
                         <div id="a2" className="br">{this.state.placing.a2}{this.state.placing.a2}</div>
