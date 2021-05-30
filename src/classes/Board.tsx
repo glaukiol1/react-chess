@@ -183,6 +183,10 @@ export default class Board extends React.Component {
         }
     }
 
+
+    /**
+     * @bug the box event listener does not remove after one of the available boxes gets clicked
+     */
     handleBoxRemovmal(currentPos: string, color: string, currentPiece: string, arr: any[]) {
         arr.forEach(e=>{
             if(e) {
