@@ -1,0 +1,27 @@
+#board {
+    width: 640px;
+    height: 640px;
+    background-color: black;
+}
+
+.gr {
+    background-color: #769656;
+    width: 80px;
+    height: 80px;
+}
+
+.br {
+    width: 80px;
+    height: 80px;
+    background-color: #baca44;
+}
+
+.row {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 80px;
+}
+
+.row * {
+    display: inline-block;
+}
