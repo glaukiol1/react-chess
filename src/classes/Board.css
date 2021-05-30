@@ -6,14 +6,23 @@
 
 .gr {
     background-color: #769656;
-    width: 80px;
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 20px !important;
+    display: inline-block;
+}
+
+.piece_img {
+    width: 75px;
     height: 80px;
 }
 
 .br {
-    width: 80px;
-    height: 80px;
+    width: 80px !important;
+    height: 80px !important;
     background-color: #baca44;
+    font-size: auto !important;
+    display: inline-block;
 }
 
 .row {
@@ -22,6 +31,3 @@
     height: 80px;
 }
 
-.row * {
-    display: inline-block;
-}
