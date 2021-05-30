@@ -1,13 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import Board from './classes/Board'
 import './App.css';
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    console.log(
+      document.getElementById('a1')
+    )
+  }
+
   render() {
     return (
       <div className="App-header">
-          <Board player="white" gameId={1} />
+          <Board  />
       </div>
     );
   }
