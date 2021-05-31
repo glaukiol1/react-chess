@@ -1,4 +1,5 @@
 export default interface props {
     name: string,
-    color: 'b' | 'w' | string
+    color: 'b' | 'w' | string,
+    secName: string
 }

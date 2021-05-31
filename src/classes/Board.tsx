@@ -66,70 +66,70 @@ export default class Board extends React.Component {
             }
         },
         placing: {
-            a1: <Piece name="R" color="w" />,
-            a2: <Piece name="P" color="w" />,
+            a1: <Piece name="R" color="w" secName="rook1" />,
+            a2: <Piece name="P" color="w" secName="pawn1" />,
             a3: '',
             a4: '',
             a5: '',
             a6: '',
-            a7: <Piece name="P" color="b" />,
-            a8: <Piece name="R" color="b" />,
-            b1: <Piece name="N" color="w" />,
-            b2: <Piece name="P" color="w" />,
+            a7: <Piece name="P" color="b" secName="pawn1" />,
+            a8: <Piece name="R" color="b" secName="rook1" />,
+            b1: <Piece name="N" color="w" secName="knight1" />,
+            b2: <Piece name="P" color="w" secName="pawn2" />,
             b3: '',
             b4: '',
             b5: '',
             b6: '',
-            b7: <Piece name="P" color="b" />,
-            b8: <Piece name="N" color="b" />,
-            c1: <Piece name="B" color="w" />,
-            c2: <Piece name="P" color="w" />,
+            b7: <Piece name="P" color="b" secName="pawn2" />,
+            b8: <Piece name="N" color="b" secName="knight1" />,
+            c1: <Piece name="B" color="w" secName="bishop1" />,
+            c2: <Piece name="P" color="w" secName="pawn3" />,
             c3: '',
             c4: '',
             c5: '',
             c6: '',
-            c7: <Piece name="P" color="b" />,
-            c8: <Piece name="B" color="b" />,
-            d1: <Piece name="Q" color="w" />,
-            d2: <Piece name="P" color="w" />,
+            c7: <Piece name="P" color="b" secName="pawn3"/>,
+            c8: <Piece name="B" color="b" secName="bishop1" />,
+            d1: <Piece name="Q" color="w" secName="queen"/>,
+            d2: <Piece name="P" color="w" secName="pawn4" />,
             d3: '',
             d4: '',
             d5: '',
             d6: '',
-            d7: <Piece name="P" color="b" />,
-            d8: <Piece name="Q" color="b" />,
-            e1: <Piece name="K" color="w" />,
-            e2: <Piece name="P" color="w" />,
+            d7: <Piece name="P" color="b" secName="pawn4" />,
+            d8: <Piece name="Q" color="b" secName="queen" />,
+            e1: <Piece name="K" color="w" secName="king" />,
+            e2: <Piece name="P" color="w" secName="pawn5" />,
             e3: '',
             e4: '',
             e5: '',
             e6: '',
-            e7: <Piece name="P" color="b" />,
-            e8: <Piece name="K" color="b" />,
-            f1: <Piece name="B" color="w" />,
-            f2: <Piece name="P" color="w" />,
+            e7: <Piece name="P" color="b" secName="pawn5" />,
+            e8: <Piece name="K" color="b" secName="king" />,
+            f1: <Piece name="B" color="w" secName="bishop2" />,
+            f2: <Piece name="P" color="w" secName="pawn6" />,
             f3: '',
             f4: '',
             f5: '',
             f6: '',
-            f7: <Piece name="P" color="b" />,
-            f8: <Piece name="B" color="b" />,
-            g1: <Piece name="N" color="w" />,
-            g2: <Piece name="P" color="w" />,
+            f7: <Piece name="P" color="b" secName="pawn6"/>,
+            f8: <Piece name="B" color="b" secName="bishop2" />,
+            g1: <Piece name="N" color="w" secName="knight2" />,
+            g2: <Piece name="P" color="w" secName="pawn7"/>,
             g3: '',
             g4: '',
             g5: '',
             g6: '',
-            g7: <Piece name="P" color="b" />,
-            g8: <Piece name="N" color="b" />,
-            h1: <Piece name="R" color="w" />,
-            h2: <Piece name="P" color="w" />,
+            g7: <Piece name="P" color="b" secName="pawn7" />,
+            g8: <Piece name="N" color="b" secName="knight2" />,
+            h1: <Piece name="R" color="w" secName="rook2" />,
+            h2: <Piece name="P" color="w" secName="pawn8" />,
             h3: '',
             h4: '',
             h5: '',
             h6: '',
-            h7: <Piece name="P" color="b" />,
-            h8: <Piece name="R" color="b" />,
+            h7: <Piece name="P" color="b" secName="pawn8" />,
+            h8: <Piece name="R" color="b" secName="rook2" />,
         },
         player: 'white'
     }
@@ -159,11 +159,11 @@ export default class Board extends React.Component {
     }
 
 
-    changePiecePos(currentPos: any, id: string, color: string, currentPiece: any){
+    changePiecePos(currentPos: any, id: string){
         console.log(currentPos, id)
         var state = {...this.state}
+        state.placing[id] = state.placing[currentPos]
         state.placing[currentPos] = '';
-        state.placing[id] = <Piece name={currentPiece} color={`${color}`} />
         // var currentPieceS: string;
         // if(currentPiece==='n') {
         //     currentPieceS = 'knights'
@@ -194,7 +194,7 @@ export default class Board extends React.Component {
         var arr: Array<HTMLElement | null> = []; 
         canMoveTo(currentPos, currentPiece, color).forEach(place=>{
             var el = document.getElementById(place)
-            if(el && !el.children[0]) {
+            if(el && el.children[0].classList[1] !== color) { 
                 el.style.backgroundColor = 'rgba(0,0,0,0.1)'
                 el.style.borderRadius = '80%';
                 arr.push(el)
@@ -211,7 +211,7 @@ export default class Board extends React.Component {
             if(e) {
                 if(e) {
                     e.addEventListener('click', (ev) => {
-                        this.changePiecePos(currentPos, e.id, color, currentPiece)
+                        this.changePiecePos(currentPos, e.id)
                         arr.forEach(el=>{
                             if(el && el) {
                                 el.style.backgroundColor = 'transparent';

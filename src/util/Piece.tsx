@@ -2,7 +2,7 @@ import props from '../@types/Piece'
 const a = (props: props) => {
     return(
         <img
-            className={`piece_img ${props.color} ${props.name}`}
+            className={`piece_img ${props.color} ${props.name} ${props.secName}`}
             src={`https://arena.myfide.net/assets/images/chess/birman-chesspieces/${props.color}${props.name}.svg`}
             alt={props.name}
         />

@@ -1,5 +1,3 @@
-import Piece from '../util/Piece'
-
 interface pawns {
     pawn1: Array<string>, // white: a2, black: a7
     pawn2: Array<string>, // white: b2, black: b7
