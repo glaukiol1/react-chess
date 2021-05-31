@@ -185,27 +185,6 @@ export default class Board extends React.Component {
 
 
     /**
-     * @bug the box event listener does not remove after one of the available boxes gets clicked
-     * @description Will loop through an array of elements, add a 'click' event listener to each one, and then remove it after one gets clicked. See bug above
-     */
-    handleBoxRemovmal(currentPos: string, color: string, currentPiece: string, arr: any[]) {
-        arr.forEach(e=>{
-            if(e) {
-                e.addEventListener('click', (ev) => {
-                    this.changePiecePos(currentPos, e.id, color, currentPiece)
-                    arr.forEach(el=>{
-                        if(el) {
-                            el.style.backgroundColor = 'transparent';
-                            el.style.borderRadius = '0';
-                            el.removeEventListener('click', this.handleBoxRemovmal)
-                        }
-                    })
-                }, {once: true})
-            }
-        })
-    }
-
-    /**
      * @description Will handle a adding a event listener on the piece, and to show available moves.
      */
     handlePieceClick(ev: any): void {
@@ -222,13 +201,30 @@ export default class Board extends React.Component {
                 setTimeout(() => {
                     document.addEventListener('click', (ev)=>{
                         if(ev.currentTarget != el && el) {
-                            el.style.backgroundColor = 'rgba(0,0,0,0)'
+                            el.style.backgroundColor = 'rgba(0,0,0,0)';
                         }
                     }, {once: true})
                 },1000)
             }
         })
-        this.handleBoxRemovmal(currentPos,color,currentPiece,arr)
+        arr.forEach(e=>{
+            if(e) {
+                if(e) {
+                    e.addEventListener('click', (ev) => {
+                        this.changePiecePos(currentPos, e.id, color, currentPiece)
+                        arr.forEach(el=>{
+                            if(el && el) {
+                                el.style.backgroundColor = 'transparent';
+                                el.style.borderRadius = '0';
+                                if (el != e) {
+                                    el.replaceWith(el.cloneNode(true)); // remove all event listeners
+                                }
+                            }
+                        })
+                    }, {once: true})
+                }
+            }
+        })
     }
 
     componentDidMount() {
